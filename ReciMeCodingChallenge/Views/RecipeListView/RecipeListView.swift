@@ -11,9 +11,10 @@ struct RecipeListView: View {
     
     @StateObject private var viewModel: RecipeListViewModel = RecipeListViewModel()
     
+    @State private var showDetails: Bool = false
+    
     let columns = [
         GridItem(.flexible(), spacing: 10),
-       
         GridItem(.flexible())
     ]
     
@@ -21,33 +22,48 @@ struct RecipeListView: View {
         ScrollView {
             LazyVGrid  (columns: columns, spacing: 10) {
                 ForEach(viewModel.recipeList, id: \.id) { recipe in
-                    VStack{
-                        ZStack(alignment: .bottom) {
-                            Image("")
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 200)
-                                .background(Color.gray)
-                                .cornerRadius(10)
+                    Button {
+                        print("Tapped \(recipe.title)")
+                        viewModel.selectedRecipe = recipe
+                        showDetails = true
+                    } label: {
+                        VStack{
+                            ZStack(alignment: .bottom) {
+                                Image("")
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 200)
+                                    .background(Color.gray)
+                                    .cornerRadius(10)
+                                
+                                HStack {
+                                    Text("\(recipe.totalPrepAndCookTime)m")
+                                    Spacer()
+                                    Text("\(recipe.numSaves ?? 0)")
+                                }
+                                .padding(10)
+                            }
                             
                             HStack {
-                                Text("\(recipe.totalPrepAndCookTime)m")
+                                Text(recipe.title)
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.leading)
                                 Spacer()
-                                Text("\(recipe.numSaves ?? 0)")
                             }
-                            .padding(10)
+                            .frame(height: 50)
+                            .padding(.horizontal, 4)
+                            
                         }
-                        
-                        HStack {
-                            Text(recipe.title)
-                            Spacer()
-                        }
-                        .padding(.horizontal, 4)
-                        
                     }
+                    .foregroundColor(.primary)
                 }
             }
             .padding(.horizontal)
         }
+        .sheet(isPresented: $showDetails, content: {
+            if let recipe = viewModel.selectedRecipe {
+                RecipeDetailsView(viewModel: RecipeDetailsViewModel(recipe: recipe))
+            }
+        })
         .frame(maxHeight: .infinity)
         .onAppear(perform: {
             self.viewModel.loadRecipeList()

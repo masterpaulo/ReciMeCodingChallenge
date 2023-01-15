@@ -13,6 +13,7 @@ class RecipeListViewModel: BaseViewModel {
    // MARK: - Published Properites
     
     @Published var recipeList: [Recipe] = []
+    @Published var selectedRecipe: Recipe?
     
 }
 
@@ -25,7 +26,9 @@ extension RecipeListViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let list):
-                self.recipeList = list
+                DispatchQueue.main.async {
+                    self.recipeList = list
+                }
             case .failure(let error):
                 debugPrint(error)
             }
