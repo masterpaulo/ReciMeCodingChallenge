@@ -32,7 +32,7 @@ struct Recipe: Decodable {
         case title
         case desc = "description"
         case recipeURL
-        case imageURL
+        case imageURL = "imageUrl"
         case creator
         case cookTime
         case prepTime
@@ -45,7 +45,13 @@ struct Recipe: Decodable {
     
 }
 
-// MARK: Computed Properties
+// MARK: - Identifiable
+
+extension Recipe: Identifiable {
+    
+}
+
+// MARK: - Computed Properties
 
 extension Recipe {
     var totalPrepAndCookTime: Int {

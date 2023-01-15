@@ -12,6 +12,7 @@ class RecipeDetailsViewModel: BaseViewModel {
    // MARK: - Published Properites
     
     @Published var recipe: Recipe
+    @Published var ingredientList: IngredientList?
     
     @Published var serveCount: Int
     
@@ -20,6 +21,9 @@ class RecipeDetailsViewModel: BaseViewModel {
     init(recipe: Recipe) {
         self.recipe = recipe
         serveCount = recipe.servingSize ?? 1
+        
+        super.init()
+        loadRecipeIngredients()
     }
     
     // MARK: - Methods
@@ -65,5 +69,29 @@ extension Int {
         text += "\(minutes)m"
         
         return text
+    }
+}
+
+// MARK: - Network Connections
+
+extension RecipeDetailsViewModel {
+    func loadRecipeIngredients() {
+        let recipeID = recipe.id
+        loadingState = .loading
+        requestLoader.getListOfIngredients(for: recipeID) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let list):
+                DispatchQueue.main.async {
+                    self.ingredientList = list
+                    self.loadingState = .loaded
+                }
+            case .failure(let error):
+                debugPrint(error)
+                DispatchQueue.main.async {
+                    self.loadingState = .error
+                }
+            }
+        }
     }
 }
