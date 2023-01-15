@@ -10,14 +10,14 @@ import Foundation
 struct User: Decodable {
     let uid: String
     var username: String
-    var prfileImageUrl: String?
+    var profileImageUrl: String?
     var firstname: String?
     var lastname: String?
     
     private enum CodingKeys : String, CodingKey {
         case uid
         case username
-        case prfileImageUrl
+        case profileImageUrl
         case firstname
         case lastname
     }

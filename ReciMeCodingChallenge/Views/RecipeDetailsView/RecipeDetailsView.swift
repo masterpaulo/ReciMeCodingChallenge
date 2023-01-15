@@ -51,7 +51,7 @@ struct RecipeDetailsView: View {
     @ViewBuilder
     var authorHeaderSubView: some View {
         HStack {
-            RemoteImage(viewModel.imageURL)
+            RemoteImage(viewModel.authorImageURL)
                 .frame(width: 30, height: 30)
                 .background(Color.gray)
                 .cornerRadius(20)
@@ -168,7 +168,6 @@ struct RecipeDetailsView: View {
                 Spacer()
             }
             
-            // TODO: Create function view builder to pass parameters
             ForEach(viewModel.methodItems) { methodItem in
                 methodItemView(methodItem)
             }
@@ -209,7 +208,7 @@ struct RecipeDetailsView: View {
             let hasRawProduct = ingredient.rawProduct != nil
             HStack(spacing: 8) {
                 
-                RemoteImage("")
+                RemoteImage(ingredient.imageFileName)
                 .frame(width: 30, height: 30)
                 .background(Color.gray)
                 .cornerRadius(15)

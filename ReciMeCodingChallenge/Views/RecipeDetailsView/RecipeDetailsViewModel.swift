@@ -54,6 +54,7 @@ extension RecipeDetailsViewModel {
     
     var title: String { recipe.title }
     var author: String { "by \(recipe.creator.username)" }
+    var authorImageURL: String { recipe.creator.profileImageUrl ?? "" }
     var prepTime: String { (recipe.prepTime ?? 0).minutesToTimeString }
     var cookTime: String { (recipe.cookTime ?? 0).minutesToTimeString }
     var difficulty: String { recipe.difficulty?.capitalized ?? " " }
