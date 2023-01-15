@@ -14,6 +14,11 @@
 		21FFB58F2973E283008A53A3 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB58E2973E283008A53A3 /* RecipeListViewModel.swift */; };
 		21FFB5922973EBF0008A53A3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB5912973EBF0008A53A3 /* Recipe.swift */; };
 		21FFB5942973EF41008A53A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB5932973EF41008A53A3 /* User.swift */; };
+		21FFB5972973F24F008A53A3 /* RouteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB5962973F24F008A53A3 /* RouteConfig.swift */; };
+		21FFB59A2973F304008A53A3 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB5992973F304008A53A3 /* AppConfig.swift */; };
+		21FFB59C2973F452008A53A3 /* RequestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB59B2973F452008A53A3 /* RequestLoader.swift */; };
+		21FFB59F2973F4BF008A53A3 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB59E2973F4BF008A53A3 /* BaseViewModel.swift */; };
+		21FFB5A12973F98C008A53A3 /* APIRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB5A02973F98B008A53A3 /* APIRoutes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		21FFB58E2973E283008A53A3 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		21FFB5912973EBF0008A53A3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		21FFB5932973EF41008A53A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		21FFB5962973F24F008A53A3 /* RouteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteConfig.swift; sourceTree = "<group>"; };
+		21FFB5992973F304008A53A3 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		21FFB59B2973F452008A53A3 /* RequestLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoader.swift; sourceTree = "<group>"; };
+		21FFB59E2973F4BF008A53A3 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		21FFB5A02973F98B008A53A3 /* APIRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoutes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +67,10 @@
 		21FFB57B2972DA55008A53A3 /* ReciMeCodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				21FFB5982973F2E1008A53A3 /* App */,
 				21FFB5902973E9B1008A53A3 /* Models */,
 				21FFB58A2973E1D8008A53A3 /* Views */,
-				21FFB57C2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift */,
+				21FFB5952973F0DD008A53A3 /* Services */,
 				21FFB5802972DA57008A53A3 /* Assets.xcassets */,
 				21FFB5822972DA57008A53A3 /* Preview Content */,
 			);
@@ -77,6 +88,7 @@
 		21FFB58A2973E1D8008A53A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21FFB59D2973F4B2008A53A3 /* Common */,
 				21FFB58B2973E21C008A53A3 /* RecipeListView */,
 			);
 			path = Views;
@@ -98,6 +110,33 @@
 				21FFB5932973EF41008A53A3 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		21FFB5952973F0DD008A53A3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				21FFB5962973F24F008A53A3 /* RouteConfig.swift */,
+				21FFB59B2973F452008A53A3 /* RequestLoader.swift */,
+				21FFB5A02973F98B008A53A3 /* APIRoutes.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		21FFB5982973F2E1008A53A3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				21FFB57C2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift */,
+				21FFB5992973F304008A53A3 /* AppConfig.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		21FFB59D2973F4B2008A53A3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				21FFB59E2973F4BF008A53A3 /* BaseViewModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,9 +210,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				21FFB58D2973E235008A53A3 /* RecipeListView.swift in Sources */,
+				21FFB5972973F24F008A53A3 /* RouteConfig.swift in Sources */,
 				21FFB57D2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift in Sources */,
+				21FFB59A2973F304008A53A3 /* AppConfig.swift in Sources */,
 				21FFB58F2973E283008A53A3 /* RecipeListViewModel.swift in Sources */,
+				21FFB59F2973F4BF008A53A3 /* BaseViewModel.swift in Sources */,
+				21FFB5A12973F98C008A53A3 /* APIRoutes.swift in Sources */,
 				21FFB5942973EF41008A53A3 /* User.swift in Sources */,
+				21FFB59C2973F452008A53A3 /* RequestLoader.swift in Sources */,
 				21FFB5922973EBF0008A53A3 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

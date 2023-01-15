@@ -49,6 +49,9 @@ struct RecipeListView: View {
             .padding(.horizontal)
         }
         .frame(maxHeight: .infinity)
+        .onAppear(perform: {
+            self.viewModel.loadRecipeList()
+        })
     }
 }
 
