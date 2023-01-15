@@ -20,7 +20,7 @@ class RecipeListViewModel: BaseViewModel {
 
 extension RecipeListViewModel {
     func loadRecipeList() {
-        let userID = "7NWpTwiUWQMm89GS3zJW7Is3Pej1"
+        let userID = AppConfig.userID
         requestLoader.getListOfRecipes(for: userID) { [weak self] result in
             guard let self = self else { return }
             switch result {

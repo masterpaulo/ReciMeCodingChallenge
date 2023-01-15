@@ -15,7 +15,7 @@ enum APIRoute: RouteConfig {
     
     
     var baseURLString: String {
-        return "https://dev.api.recime.app/web-api/"
+        return AppConfig.API.baseURL
     }
     
     var method: HTTPMethod {
