@@ -22,15 +22,20 @@ class RecipeListViewModel: BaseViewModel {
 extension RecipeListViewModel {
     func loadRecipeList() {
         let userID = AppConfig.userID
+        loadingState = .loading
         requestLoader.getListOfRecipes(for: userID) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let list):
                 DispatchQueue.main.async {
                     self.recipeList = list
+                    self.loadingState = .loaded
                 }
             case .failure(let error):
                 debugPrint(error)
+                DispatchQueue.main.async {
+                    self.loadingState = .error
+                }
             }
         }
     }
