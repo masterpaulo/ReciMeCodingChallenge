@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		210B4304297400F0002AFDBE /* RecipeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B4303297400F0002AFDBE /* RecipeDetailsViewModel.swift */; };
 		210B430629740108002AFDBE /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B430529740108002AFDBE /* RecipeDetailsView.swift */; };
+		210B430B29742266002AFDBE /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B430A29742266002AFDBE /* RemoteImageView.swift */; };
 		21FFB57D2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB57C2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift */; };
 		21FFB5812972DA57008A53A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FFB5802972DA57008A53A3 /* Assets.xcassets */; };
 		21FFB5842972DA57008A53A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FFB5832972DA57008A53A3 /* Preview Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		210B4303297400F0002AFDBE /* RecipeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModel.swift; sourceTree = "<group>"; };
 		210B430529740108002AFDBE /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
+		210B430A29742266002AFDBE /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		21FFB5792972DA55008A53A3 /* ReciMeCodingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReciMeCodingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FFB57C2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciMeCodingChallengeApp.swift; sourceTree = "<group>"; };
 		21FFB5802972DA57008A53A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210B430929742251002AFDBE /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				210B430A29742266002AFDBE /* RemoteImageView.swift */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
 		21FFB5702972DA55008A53A3 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 		21FFB59D2973F4B2008A53A3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				210B430929742251002AFDBE /* Reusable Views */,
 				21FFB59E2973F4BF008A53A3 /* BaseViewModel.swift */,
 			);
 			path = Common;
@@ -228,6 +239,7 @@
 				21FFB57D2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift in Sources */,
 				21FFB59A2973F304008A53A3 /* AppConfig.swift in Sources */,
 				21FFB58F2973E283008A53A3 /* RecipeListViewModel.swift in Sources */,
+				210B430B29742266002AFDBE /* RemoteImageView.swift in Sources */,
 				21FFB59F2973F4BF008A53A3 /* BaseViewModel.swift in Sources */,
 				21FFB5A12973F98C008A53A3 /* APIRoutes.swift in Sources */,
 				210B430629740108002AFDBE /* RecipeDetailsView.swift in Sources */,

@@ -44,6 +44,7 @@ extension RecipeDetailsViewModel {
     var prepTime: String { (recipe.prepTime ?? 0).minutesToTimeString }
     var cookTime: String { (recipe.cookTime ?? 0).minutesToTimeString }
     var difficulty: String { recipe.difficulty?.capitalized ?? " " }
+    var imageURL: String { recipe.imageURL ?? "" }
     var description: String { recipe.desc ?? "" }
     
 }

@@ -31,10 +31,10 @@ struct RecipeListView: View {
                             } label: {
                                 VStack{
                                     ZStack(alignment: .bottom) {
-                                        Image("")
-                                            .frame(maxWidth: .infinity)
-                                            .frame(height: 200)
+                                        
+                                        RemoteImage(recipe.imageURL)
                                             .background(Color.gray)
+                                            .frame(height: 200)
                                             .cornerRadius(10)
                                         
                                         HStack {
