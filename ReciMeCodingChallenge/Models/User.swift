@@ -8,14 +8,14 @@
 import Foundation
 
 struct User: Decodable {
-    let uuid: String
+    let uid: String
     var username: String
     var prfileImageUrl: String?
     var firstname: String?
     var lastname: String?
     
     private enum CodingKeys : String, CodingKey {
-        case uuid
+        case uid
         case username
         case prfileImageUrl
         case firstname
