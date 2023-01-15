@@ -181,13 +181,14 @@ struct RecipeDetailsView: View {
     
     @ViewBuilder
     var taglistView: some View {
-        VStack {
+        VStack(spacing: 8) {
             HStack {
                 Text("Tags")
                     .font(.system(size: 18))
                 Spacer()
             }
-            .padding(.vertical, 20)
+            
+            TagView(tags: viewModel.recipe.tags)
         }
         .padding(.top, 20)
     }

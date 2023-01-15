@@ -12,6 +12,7 @@
 		210B430B29742266002AFDBE /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B430A29742266002AFDBE /* RemoteImageView.swift */; };
 		210B430D29742CEA002AFDBE /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B430C29742CEA002AFDBE /* Ingredient.swift */; };
 		210B431029743A71002AFDBE /* Int+TimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B430F29743A71002AFDBE /* Int+TimeString.swift */; };
+		210B43122974608B002AFDBE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B43112974608B002AFDBE /* TagView.swift */; };
 		21FFB57D2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFB57C2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift */; };
 		21FFB5812972DA57008A53A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FFB5802972DA57008A53A3 /* Assets.xcassets */; };
 		21FFB5842972DA57008A53A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FFB5832972DA57008A53A3 /* Preview Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		210B430A29742266002AFDBE /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		210B430C29742CEA002AFDBE /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		210B430F29743A71002AFDBE /* Int+TimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeString.swift"; sourceTree = "<group>"; };
+		210B43112974608B002AFDBE /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		21FFB5792972DA55008A53A3 /* ReciMeCodingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReciMeCodingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FFB57C2972DA55008A53A3 /* ReciMeCodingChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciMeCodingChallengeApp.swift; sourceTree = "<group>"; };
 		21FFB5802972DA57008A53A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				210B430A29742266002AFDBE /* RemoteImageView.swift */,
+				210B43112974608B002AFDBE /* TagView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				21FFB5942973EF41008A53A3 /* User.swift in Sources */,
 				21FFB59C2973F452008A53A3 /* RequestLoader.swift in Sources */,
 				21FFB5922973EBF0008A53A3 /* Recipe.swift in Sources */,
+				210B43122974608B002AFDBE /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
