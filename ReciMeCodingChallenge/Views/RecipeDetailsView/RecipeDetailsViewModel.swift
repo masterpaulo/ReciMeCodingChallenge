@@ -43,6 +43,7 @@ class RecipeDetailsViewModel: BaseViewModel {
 // MARK: - Display Properties
 
 extension RecipeDetailsViewModel {
+    
     var title: String { recipe.title }
     var author: String { "by \(recipe.creator.username)" }
     var prepTime: String { (recipe.prepTime ?? 0).minutesToTimeString }
@@ -51,7 +52,51 @@ extension RecipeDetailsViewModel {
     var imageURL: String { recipe.imageURL ?? "" }
     var description: String { recipe.desc ?? "" }
     
+    var methodItems: [MethodItemViewModel] {
+        
+        guard let methodsString = recipe.method else { return [] }
+        
+        let lines = methodsString.split(separator: "\n")
+        
+        var methods = [MethodItemViewModel]()
+        
+        var lastIndexOfHeaderLine: Int = -1
+        
+        for (index, line) in lines.enumerated() {
+            if line.hasPrefix("##") {
+                lastIndexOfHeaderLine = index
+                let stepNumber = index - lastIndexOfHeaderLine
+                let text = line.dropFirst(2).trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                methods.append(MethodItemViewModel(step: stepNumber, text: text))
+            } else {
+                let stepNumber = index - lastIndexOfHeaderLine
+                let text = String(line)
+                methods.append(MethodItemViewModel(step: stepNumber, text: text))
+            }
+            
+        }
+        
+        return methods
+    }
+    
+    
 }
+
+
+/// step - indicates a numerical value of what step the line is based on order; if step is zero (0), display text as a header
+/// text - the string value to display the details of the header title
+class MethodItemViewModel: Identifiable {
+    let id = UUID()
+    let step: Int
+    let text: String
+    
+    init(step: Int, text: String) {
+        self.step = step
+        self.text = text
+    }
+}
+
 
 // MARK: - Network Connections
 

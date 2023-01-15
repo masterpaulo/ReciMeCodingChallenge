@@ -153,7 +153,7 @@ struct RecipeDetailsView: View {
                 // TODO: Create function view builder to pass parameters
                 HStack {
                     Text("Heading")
-                        .font(.system(size: 18, weight: .medium))
+                        .font(.system(size: 18, weight: .bold))
                     Spacer()
                 }
                 
@@ -187,43 +187,27 @@ struct RecipeDetailsView: View {
                 
             }
         }
+        .padding(.top, 20)
     }
     
     // MARK: - Methods View
     
     @ViewBuilder
     var methodsView: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             HStack {
                 Text("Method")
-                    .font(.system(size: 24, weight: .medium))
+                    .font(.system(size: 24, weight: .regular))
                 Spacer()
             }
             
             // TODO: Create function view builder to pass parameters
-            HStack {
-                Text("Heading")
-                    .font(.system(size: 18, weight: .medium))
-                Spacer()
+            ForEach(viewModel.methodItems) { methodItem in
+                methodItemView(methodItem)
             }
             
-            ForEach(0..<3) { i in
-                
-                // TODO: Create function view builder to pass parameters
-                HStack {
-                    Text("Step \(i + 1)")
-                        .font(.system(size: 16, weight: .medium))
-                    Spacer()
-                }
-                
-                HStack {
-                    Text("This is an exmple step. Please see attached for reference.")
-                        .font(.system(size: 14))
-                    Spacer()
-                }
-                
-            }
         }
+        .padding(.top, 20)
     }
     
     // MARK: - Tags View
@@ -236,8 +220,42 @@ struct RecipeDetailsView: View {
                     .font(.system(size: 18))
                 Spacer()
             }
+            .padding(.vertical, 20)
+        }
+        .padding(.top, 20)
+    }
+    
+    // MARK: - Methods
+    
+    @ViewBuilder
+    func methodItemView(_ methodItemViewModel: MethodItemViewModel) -> some View {
+        if methodItemViewModel.step == 0 {
+            HStack {
+                Text(methodItemViewModel.text)
+                    .font(.system(size: 20, weight: .bold))
+                Spacer()
+            }
+            .padding(.vertical, 10)
+        } else {
+            VStack {
+                HStack {
+                    Text("Step \(methodItemViewModel.step)")
+                        .font(.system(size: 15, weight: .bold))
+                    Spacer()
+                }
+                .padding(.bottom, 4)
+                
+                HStack {
+                    Text(methodItemViewModel.text)
+                        .font(.system(size: 13))
+                    Spacer()
+                }
+            }
+            .padding(5)
+            
         }
     }
+    
 }
 
 struct RecipeDetailsView_Previews: PreviewProvider {
