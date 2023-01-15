@@ -12,6 +12,6 @@ class RecipeListViewModel: ObservableObject {
     
    // MARK: - Published Properites
     
-    @Published var recipeList: [String] = (0...12).map{"Item \($0)"}
+    @Published var recipeList: [Recipe] = []
     
 }

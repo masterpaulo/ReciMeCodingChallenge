@@ -44,3 +44,11 @@ struct Recipe: Decodable {
     }
     
 }
+
+// MARK: Computed Properties
+
+extension Recipe {
+    var totalPrepAndCookTime: Int {
+        (cookTime ?? 0) + (prepTime ?? 0)
+    }
+}

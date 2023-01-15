@@ -20,7 +20,7 @@ struct RecipeListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid  (columns: columns, spacing: 10) {
-                ForEach(viewModel.recipeList, id: \.self) { item in
+                ForEach(viewModel.recipeList, id: \.id) { recipe in
                     VStack{
                         ZStack(alignment: .bottom) {
                             Image("")
@@ -30,15 +30,15 @@ struct RecipeListView: View {
                                 .cornerRadius(10)
                             
                             HStack {
-                                Text("40m")
+                                Text("\(recipe.totalPrepAndCookTime)m")
                                 Spacer()
-                                Text("122")
+                                Text("\(recipe.numSaves ?? 0)")
                             }
                             .padding(10)
                         }
                         
                         HStack {
-                            Text(item)
+                            Text(recipe.title)
                             Spacer()
                         }
                         .padding(.horizontal, 4)
