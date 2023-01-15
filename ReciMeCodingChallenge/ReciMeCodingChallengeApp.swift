@@ -11,7 +11,7 @@ import SwiftUI
 struct ReciMeCodingChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RecipeListView()
         }
     }
 }
