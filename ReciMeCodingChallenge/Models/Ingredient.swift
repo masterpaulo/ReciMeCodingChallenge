@@ -17,7 +17,7 @@ struct IngredientList: Decodable {
     }
 }
 
-enum IngredientItemType: Decodable {
+enum IngredientItemType: Decodable, Identifiable {
     case header(title: String)
     case ingredient(ingredient: Ingredient)
     
@@ -33,6 +33,11 @@ enum IngredientItemType: Decodable {
     enum IngredientCodingKeys: CodingKey {
         case ingredient
     }
+    
+    var id: String {
+        return UUID().uuidString
+    }
+    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -75,6 +80,35 @@ struct Ingredient: Decodable {
     }
     
 }
+
+// MARK: - Computed Properties
+
+extension Ingredient {
+    func rawProductText1(multiplier: Double = 1.0) -> String {
+        var text = ""
+        if let quantity = quantity {
+            let value = round(100 * quantity * multiplier) / 100
+            text += "\(value) "
+        }
+        if let unit = unit {
+            text += "\(unit)"
+        }
+        
+        return text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    var rawProductText2: String {
+        var text = ""
+        if let productModifier = productModifier {
+            text += "\(productModifier) "
+        }
+        if let rawProduct = rawProduct {
+            text += "\(rawProduct)"
+        }
+        return text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+}
+
 
 struct Measurement: Decodable {
     var measurement: String

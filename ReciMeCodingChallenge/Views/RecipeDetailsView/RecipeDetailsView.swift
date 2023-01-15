@@ -102,7 +102,7 @@ struct RecipeDetailsView: View {
     
     @ViewBuilder
     var descriptionView: some View {
-        VStack {
+        VStack(spacing: 8) {
             HStack {
                 Text("About")
                     .font(.system(size: 18))
@@ -114,16 +114,17 @@ struct RecipeDetailsView: View {
                 Spacer()
             }
         }
+        .padding(.top, 10)
     }
     
     // MARK: - Ingredients View
     
     @ViewBuilder
     var ingredientsView: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             HStack {
                 Text("Ingredients")
-                    .font(.system(size: 24, weight: .medium))
+                    .font(.system(size: 24, weight: .regular))
                 Spacer()
             }
             HStack {
@@ -147,44 +148,10 @@ struct RecipeDetailsView: View {
                 Spacer()
                 
             }
+            .padding(.vertical, 10)
             
-            ForEach(0..<2) { i in
-                
-                // TODO: Create function view builder to pass parameters
-                HStack {
-                    Text("Heading")
-                        .font(.system(size: 18, weight: .bold))
-                    Spacer()
-                }
-                
-                
-                // TODO: Create function view builder to pass parameters
-                HStack(spacing: 8) {
-                    RemoteImage(viewModel.imageURL)
-                    .frame(width: 30, height: 30)
-                    .background(Color.gray)
-                    .cornerRadius(15)
-                    
-                    VStack {
-                        HStack(spacing: 5) {
-                            Text("4 slices")
-                                .font(.system(size: 14, weight: .bold))
-                            
-                            Text("apple")
-                                .font(.system(size: 14))
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text("prep notes")
-                                .font(.system(size: 12))
-                            Spacer()
-                        }
-                    }
-                    Spacer()
-                }
-                .padding(.horizontal, 8)
-                
+            ForEach(viewModel.ingredientList) { item in
+                ingredientItemView(item)
             }
         }
         .padding(.top, 20)
@@ -228,6 +195,60 @@ struct RecipeDetailsView: View {
     // MARK: - Methods
     
     @ViewBuilder
+    func ingredientItemView(_ item: IngredientItemType) -> some View {
+        switch item {
+        case .header(let title):
+            HStack {
+                Text(title)
+                    .font(.system(size: 18, weight: .bold))
+                Spacer()
+            }
+            .padding(.top, 20)
+        case .ingredient(let ingredient):
+            let hasRawProduct = ingredient.rawProduct != nil
+            HStack(spacing: 8) {
+                
+                RemoteImage("")
+                .frame(width: 30, height: 30)
+                .background(Color.gray)
+                .cornerRadius(15)
+                
+                if hasRawProduct {
+                    VStack(spacing: 4) {
+                        HStack(spacing: 5) {
+                            if !ingredient.rawProductText1(multiplier: viewModel.multiplier).isEmpty {
+                                Text(ingredient.rawProductText1(multiplier: viewModel.multiplier))
+                                    .font(.system(size: 14, weight: .bold))
+                            }
+                            Text(ingredient.rawProductText2)
+                                .font(.system(size: 14))
+                            Spacer()
+                        }
+                        if let prepNotes = ingredient.preparationNotes, !prepNotes.isEmpty {
+                            HStack {
+                                Text(prepNotes)
+                                    .font(.system(size: 12))
+                                Spacer()
+                            }
+                        }
+                    }
+                } else {
+                    VStack {
+                        HStack(spacing: 5) {
+                            Text(ingredient.rawText ?? "")
+                                .font(.system(size: 14))
+                            Spacer()
+                        }
+                    }
+                }
+                Spacer()
+            }
+            .padding(.horizontal, 8)
+            .padding(.vertical, 5)
+        }
+    }
+    
+    @ViewBuilder
     func methodItemView(_ methodItemViewModel: MethodItemViewModel) -> some View {
         if methodItemViewModel.step == 0 {
             HStack {
@@ -252,10 +273,8 @@ struct RecipeDetailsView: View {
                 }
             }
             .padding(5)
-            
         }
     }
-    
 }
 
 struct RecipeDetailsView_Previews: PreviewProvider {

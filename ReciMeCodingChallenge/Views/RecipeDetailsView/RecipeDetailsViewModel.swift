@@ -12,15 +12,23 @@ class RecipeDetailsViewModel: BaseViewModel {
    // MARK: - Published Properites
     
     @Published var recipe: Recipe
-    @Published var ingredientList: IngredientList?
+    @Published var ingredientList: [IngredientItemType] = []
     
     @Published var serveCount: Int
+    
+    let defaultServeCount: Int
+    
+    var multiplier: Double {
+        Double(serveCount) / Double(defaultServeCount)
+    }
     
     // MARK: - init
     
     init(recipe: Recipe) {
         self.recipe = recipe
-        serveCount = recipe.servingSize ?? 1
+        let serveCount = recipe.servingSize ?? 1
+        self.serveCount = serveCount
+        defaultServeCount = serveCount
         
         super.init()
         loadRecipeIngredients()
@@ -76,13 +84,9 @@ extension RecipeDetailsViewModel {
             }
             
         }
-        
         return methods
     }
-    
-    
 }
-
 
 /// step - indicates a numerical value of what step the line is based on order; if step is zero (0), display text as a header
 /// text - the string value to display the details of the header title
@@ -109,7 +113,7 @@ extension RecipeDetailsViewModel {
             switch result {
             case .success(let list):
                 DispatchQueue.main.async {
-                    self.ingredientList = list
+                    self.ingredientList = list.list
                     self.loadingState = .loaded
                 }
             case .failure(let error):
