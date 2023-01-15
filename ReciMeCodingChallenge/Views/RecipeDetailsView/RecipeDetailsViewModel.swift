@@ -53,25 +53,6 @@ extension RecipeDetailsViewModel {
     
 }
 
-
-// TODO: Put in a Utility file
-extension Int {
-    var minutesToTimeString: String {
-        let hours = self / 60
-        let minutes = self % 60
-        
-        var text = ""
-        
-        if hours > 0 {
-            text += "\(hours)h "
-        }
-        
-        text += "\(minutes)m"
-        
-        return text
-    }
-}
-
 // MARK: - Network Connections
 
 extension RecipeDetailsViewModel {
