@@ -10,15 +10,18 @@ import SwiftUI
 public struct RemoteImage: View {
 
     @ObservedObject var imageLoader: RemoteImageLoader
+    
+    let placeholder: UIImage?
 
-    public init(_ url: String?) {
+    public init(_ url: String?, placeholder: UIImage? = nil) {
         self.imageLoader = RemoteImageLoader(imageURL: url)
+        self.placeholder = placeholder
     }
 
     public var body: some View {
         VStack(alignment: .center, spacing: .zero) {
             VStack(alignment: .center, spacing: .zero) {
-                Image(uiImage: UIImage(data: imageLoader.imageData) ?? UIImage())
+                Image(uiImage: UIImage(data: imageLoader.imageData) ?? placeholder ?? UIImage())
                     .resizable()
                     .clipped()
             }

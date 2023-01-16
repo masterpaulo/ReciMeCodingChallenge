@@ -208,10 +208,11 @@ struct RecipeDetailsView: View {
             let hasRawProduct = ingredient.rawProduct != nil
             HStack(spacing: 8) {
                 
-                RemoteImage(ingredient.imageFileName)
-                .frame(width: 30, height: 30)
-                .background(Color.gray)
-                .cornerRadius(15)
+                RemoteImage(ingredient.imageFileName, placeholder: UIImage(named: "food-icon")) // cannot fine image filename ?
+                    .foregroundColor(.white)
+                    .frame(width: 30, height: 30)
+                    .background(Color.gray)
+                    .cornerRadius(15)
                 
                 if hasRawProduct {
                     VStack(spacing: 4) {
